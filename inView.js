@@ -6,15 +6,15 @@ function inView(selector, selection, offset) {
 		selectorArray = getArrayFromNodelist(selectorNodeList),
 		inviewElements = getMatchingElements();
 
-	function getMatchingElements () {
+	function getMatchingElements() {
 
 		// filter non-matching elements
 		var filteredElements = selectorArray.filter(function (el) {
 
 			// determine if element is in viewport and parent node is visible as element may not be due to inView implementation. Usually an element itself would be hidden before fading in, whereas if the parent is hidden this will usually be due to another piece of functionality like a set of tabs/carousel etc. inView can be run on callback of tabs/carousel and will match the hidden element
 			var parent = el.parentNode,
-					inViewport = isElementInViewport(el),
-					isVisible = inViewport ? isElementVisible(parent) : false;
+				inViewport = isElementInViewport(el),
+				isVisible = inViewport ? isElementVisible(parent) : false;
 
 			// return if in viewport and visible
 			return (inViewport && isVisible);
@@ -24,14 +24,14 @@ function inView(selector, selection, offset) {
 	}
 
 	// detect element properties
-	function isElementInViewport (el) {
+	function isElementInViewport(el) {
 
 		// get boundaries of element and window
 		var elClientRect = el.getBoundingClientRect(),
-				elHeight = el.offsetHeight,
-				elTop = elClientRect.top,
-				elBottom = elClientRect.bottom,
-				winHeight = window.innerHeight || document.documentElement.clientHeight;
+			elHeight = el.offsetHeight,
+			elTop = elClientRect.top,
+			elBottom = elClientRect.bottom,
+			winHeight = window.innerHeight || document.documentElement.clientHeight;
 
 		// return in view based on selection
 		switch (selection) {
@@ -51,12 +51,12 @@ function inView(selector, selection, offset) {
 				return viewportAll(elTop, elBottom, elHeight, winHeight);
 		}
 	}
-	function isElementVisible (el) {
+	function isElementVisible(el) {
 
 		// get style properties of element and check element is visible
 		var opacity = getStyle(el, 'opacity') === '0',
-				display = getStyle(el, 'display') === 'none',
-				visibility = getStyle(el, 'visibility') === 'hidden';
+			display = getStyle(el, 'display') === 'none',
+			visibility = getStyle(el, 'visibility') === 'hidden';
 
 		// if element is not visible, return false
 		if (opacity || display || visibility) return false;
@@ -86,8 +86,7 @@ function inView(selector, selection, offset) {
 	}
 
 	// utils
-	function getStyle (el, prop) {
-
+	function getStyle(el, prop) {
 		// get style properties
 		if (window.getComputedStyle) {
 			return document.defaultView.getComputedStyle(el, null)[prop];
@@ -95,9 +94,9 @@ function inView(selector, selection, offset) {
 			return el.currentStyle[prop];
 		}
 	}
-	function getArrayFromNodelist (nodeList) {
+	function getArrayFromNodelist(nodeList) {
 		// create empty array to push to
-		var nodeArray = []; 
+		var nodeArray = [];
 		// loop through each item in the nodeList and add to nodeArray
 		for (var i = 0; i < nodeList.length; i++) {
 			nodeArray.push(nodeList[i]);
@@ -105,7 +104,7 @@ function inView(selector, selection, offset) {
 		// return nodeList as array
 		return nodeArray;
 	}
-	
+
 	// return nodeList of visible elements within the viewport
 	return inviewElements;
 }
