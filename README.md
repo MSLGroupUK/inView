@@ -2,7 +2,7 @@
 A function returning current elements in the browser viewport.
 
 ##Usage
-```
+```javascript
 var elements = inView('.selector', selection, offset);
 ```
 
