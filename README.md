@@ -25,4 +25,6 @@ Offset the viewport by a pixel amount. Handy for lazy-loading images before they
 
 ##Release History
 
-v1.0.1 - Added readme
+* v1.0.2 - Added code linting
+* v1.0.1 - Added readme
+* v1.0.0 - Initial release

@@ -1,7 +1,7 @@
 function inView(selector, selection, offset) {
 
 	// get nodeList from selector and convert to array
-	var offset = !!offset ? offset : 0,
+	var scrollOffset = !!offset ? offset : 0,
 		selectorNodeList = document.querySelectorAll(selector),
 		selectorArray = getArrayFromNodelist(selectorNodeList),
 		inviewElements = getMatchingElements();
@@ -37,16 +37,12 @@ function inView(selector, selection, offset) {
 		switch (selection) {
 			case 'top':
 				return viewportTop(elTop, elBottom);
-				break;
 			case 'bottom':
 				return viewportBottom(elTop, elBottom, elHeight, winHeight);
-				break;
 			case 'inner':
 				return viewportInner(elTop, elBottom, winHeight);
-				break;
 			case 'all':
 				return viewportAll(elTop, elBottom, elHeight, winHeight);
-				break;
 			default:
 				return viewportAll(elTop, elBottom, elHeight, winHeight);
 		}
@@ -73,13 +69,13 @@ function inView(selector, selection, offset) {
 
 	// calculate element position in viewport
 	function viewportTop(elTop, elBottom) {
-		return (elTop <= 0 - offset) && (elBottom >= 0 - offset);
+		return (elTop <= 0 - scrollOffset) && (elBottom >= 0 - scrollOffset);
 	}
 	function viewportBottom(elTop, elBottom, elHeight, winHeight) {
 		return elBottom <= (0 + winHeight + elHeight) && elBottom >= winHeight;
 	}
 	function viewportAll(elTop, elBottom, elHeight, winHeight) {
-		return elTop >= -(elHeight) - offset && elBottom <= (winHeight + elHeight) - offset;
+		return elTop >= -(elHeight) - scrollOffset && elBottom <= (winHeight + elHeight) - scrollOffset;
 	}
 	function viewportInner(elTop, elBottom, winHeight) {
 		return elTop >= 0 && elBottom <= winHeight;
