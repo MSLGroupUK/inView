@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 		watch: {
 			js: {
 				files: [
-					'inView.js'
+					'inview.js'
 				],
 				tasks: ['js']
 			}
@@ -35,7 +35,7 @@ module.exports = function (grunt) {
 		//	Hint .js files according to .jshintrc
 		jshint: {
 			all: [
-				'inView.js'
+				'inview.js'
 			],
 			options: {
 				jshintrc: '.jshintrc',
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 		//	Test javascript writing conventions according to .jscs.json
 		jscs: {
 			src: [
-				'inView.js'
+				'inview.js'
 			],
 			options: {
 				config: '.jscs.json',

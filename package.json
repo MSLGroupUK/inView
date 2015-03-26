@@ -2,7 +2,7 @@
 	"name": "inView",
 	"version": "1.0.2",
 	"description": "A function returning current elements in the browser viewport",
-	"main": "inView.js",
+	"main": "inview.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/MSLGroupUK/inView.git"
